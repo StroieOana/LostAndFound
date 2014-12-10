@@ -1,0 +1,6 @@
+class MainPage < ActionController::Base
+
+   def main
+   end
+
+end
