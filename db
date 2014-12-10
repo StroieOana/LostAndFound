@@ -1,0 +1,22 @@
+CREATE TABLE objects(
+	id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	description TEXT NOT NULL,
+	latitude REAL NOT NULL,
+	longitude REAL NOT NULL,
+	pers_id INTEGER NOT NULL,
+	data TEXT
+);
+CREATE TABLE persons (
+	id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	name TEXT NOT NULL,
+	telephone TEXT NOT NULL,
+	email TEXT NOT NULL
+);
+
+CREATE INDEX index_on_description ON objects (description);
+
+INSERT INTO persons VALUES(NULL, 'Andrei', '0723123421', 'andrei@yahoo.com');
+INSERT INTO objects VALUES(NULL, 'esarfa rosie', 44.26, 26.03, 1, '2014-12-10');
+
+INSERT INTO persons VALUES(NULL, 'Oana', '0723198721', 'oana@yahoo.com');
+INSERT INTO objects VALUES(NULL, 'geanta neagra', 40.26, 28.03, 2,'2014-12-11');
