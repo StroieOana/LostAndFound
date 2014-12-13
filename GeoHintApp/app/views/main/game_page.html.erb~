@@ -53,16 +53,17 @@
 
 
 <h1>Hello, <%= @user.name %>!</h1>
-
+<h3>You are at level <%= @user.level_id%></h3>
 <table>
   <tr>
     <td width="25%" style="padding-left:20px">
+    <h4>Are you ready for next level ? </h4>
     <form action="/submit_answers" method="post" class="tr">
       <% @hints.each do |hint| %>
         <div class="tr">
           <span class="td"><%= hint.question%></span>
           <p></p>
-          <span class="td" style="padding-left:20px"><input type="text" name="<%=hint.id%>" size="10" placeholder="answer"></span>
+          <span class="td" style="padding-left:20px"><input type="text" name="answer<%=hint.id%>" size="10" placeholder="answer"></span>
           <p></p>
         </div>
        <% end %>

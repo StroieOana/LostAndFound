@@ -38,21 +38,19 @@ class MainController < ActionController::Base
    
    def submit_answers
       @hints = Level.find_by(:id => session[:level_id]).hints
-     # failed = 0
-      
-  #    @hints.each do |hint|
-   #      if( hint.answer != params[#{hint.id}] )
-      #        failed = 1
-    #     end
-    #  end
-      
-     # if( failed == 0 )
-           #next level
-     # end
-      puts "HELOO2"
-      puts params[1]
-      puts params[2]
-      puts "HELOO2"
+      failed = 0
+      params.keys.select{|k| k.start_with?('answer')}.each do |answer_key|
+            answer_id = answer_key.gsub(/^answer/,'').to_i
+            if( params[answer_key] != Hint.find_by(:id => answer_id).answer )
+                  failed = 1
+            end
+      end
+      if( failed == 0 )
+         user = User.find_by(:id => session[:user_id])
+         if( user.level_id != Level.last.id )
+            user.update(:level_id => user.level_id + 1)
+         end
+      end
       id = session[:user_id]
       redirect_to ("/main/#{id}")
    end
