@@ -1,0 +1,34 @@
+create TABLE users(
+	id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	name TEXT NOT NULL,
+	password TEXT NOT NULL,
+	level_id INTEGER
+);
+
+create TABLE levels(
+	id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	name TEXT NOT NULL
+);
+
+create TABLE hints(
+	id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	question TEXT,
+	answer TEXT,
+	level_id INTEGER
+);
+
+INSERT INTO levels VALUES(NULL, "level1");
+INSERT INTO levels VALUES(NULL, "level2");
+INSERT INTO levels VALUES(NULL, "level3");
+INSERT INTO levels VALUES(NULL, "level4");
+INSERT INTO hints VALUES(NULL, "hint1", "answer1", 1);
+INSERT INTO hints VALUES(NULL, "hint2", "answer1", 1);
+INSERT INTO hints VALUES(NULL, "hint1", "answer1", 2);
+INSERT INTO hints VALUES(NULL, "hint2", "answer1", 2);
+INSERT INTO hints VALUES(NULL, "hint3", "answer1", 2);
+INSERT INTO hints VALUES(NULL, "hint1", "answer1", 3);
+INSERT INTO hints VALUES(NULL, "hint2", "answer1", 3);
+INSERT INTO hints VALUES(NULL, "hint1", "answer1", 4);
+INSERT INTO hints VALUES(NULL, "hint2", "answer1", 4);
+INSERT INTO hints VALUES(NULL, "hint3", "answer1", 4);
+INSERT INTO hints VALUES(NULL, "hint4", "answer1", 4);
