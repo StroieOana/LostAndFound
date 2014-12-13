@@ -1,7 +1,59 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style type="text/css">
+      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiC84j3pUA5mrFcjg7vvuMCfhEzx8ppCA">
+    </script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: { lat: 44.4, lng: 26.0},
+          zoom: 13
+        };
+
+         var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	      var marker = new google.maps.Marker({
+       		position: new google.maps.LatLng(44.4,26.0),
+       		title:"Hello World!"
+    		});
+    		marker.setMap(map);
+ 			jQuery.ajax({
+               url : '/game_page_json',
+               dataType : 'json',
+               success : function(response) {
+                       for (var i = 0; i < response.length; i++) {
+                           var hint = response[i];
+                           console.log(hint["answer"]);
+                           tmpLatLng = new google.maps.LatLng( 44.4 + i * 0.01, 26.0 + i * 0.01);
+                           var marker = new google.maps.Marker({
+                              map: map,
+                              position: tmpLatLng,
+                              title : hint["question"]
+                           });
+                           //bindInfoWindow(marker, map, infowindow, '<b>'+places[p].name + "</b><br>" + places[p].geo_name);
+                           marker.setMap(map);
+                        }
+                  
+                  
+               }
+          }) ;
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+
+</head>
 <title>GeoHint</title>
 <body bgcolor="#BCC6CC">
 <h1>Hello, <%= @user.name %>!</h1>
+
+
+<div style='width: 1000px; height:500px;'>
+ <div id="map-canvas"></div>
+</div>
 </body>
 </html>

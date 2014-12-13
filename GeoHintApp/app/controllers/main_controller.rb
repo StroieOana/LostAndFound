@@ -25,7 +25,13 @@ class MainController < ActionController::Base
    def game_page
       @user_all = User.all
       @user = User.find_by(:id => params[:id])
-      
+      level = Level.find_by(:id => @user.level_id)
+      session[:level_id] = level.id
+   end
+   
+   def game_page_json
+      level = Level.find_by(:id => session[:level_id])
+      render :json => level.hints
    end
 
 end
