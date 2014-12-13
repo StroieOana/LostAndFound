@@ -11,53 +11,72 @@
     <script type="text/javascript">
       function initialize() {
         var mapOptions = {
-          center: { lat: 44.4, lng: 26.0},
-          zoom: 13
+          center: { lat: 44.44, lng: 26.05},
+          zoom: 12
         };
-
+          var marker;
          var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-	      var marker = new google.maps.Marker({
-       		position: new google.maps.LatLng(44.4,26.0),
-       		title:"Hello World!"
-    		});
-    		marker.setMap(map);
  			jQuery.ajax({
                url : '/game_page_json',
                dataType : 'json',
                success : function(response) {
                        for (var i = 0; i < response.length; i++) {
                            var hint = response[i];
-                           console.log(hint["answer"]);
-                           tmpLatLng = new google.maps.LatLng( 44.4 + i * 0.01, 26.0 + i * 0.01);
-                           var marker = new google.maps.Marker({
+                           tmpLatLng = new google.maps.LatLng( hint["lat"], hint["long"]);
+                            marker = new google.maps.Marker({
                               map: map,
                               position: tmpLatLng,
-                              title : hint["question"]
+                              title : hint["question"],
+                              animation: google.maps.Animation.BOUNCE
+
                            });
-                           //bindInfoWindow(marker, map, infowindow, '<b>'+places[p].name + "</b><br>" + places[p].geo_name);
-                           marker.setMap(map);
+                         //   var infowindow = new google.maps.InfoWindow({
+                         //       content: hint["question"]
+                         //   });
+                           
+                         //  bindInfoWindow(marker, map, infowindow, '');
+                            marker.setMap(map);
+                            google.maps.event.addListener(marker, 'click', function() {
+                                infowindow.open(map,marker);
+                            });
                         }
-                  
-                  
                }
           }) ;
-         
-
-
-	
       }
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-
-
 </head>
 <title>GeoHint</title>
+
+
 <body bgcolor="#BCC6CC">
+
+
 <h1>Hello, <%= @user.name %>!</h1>
 
-
-<div style='width: 1000px; height:500px;'>
- <div id="map-canvas"></div>
-</div>
+<table>
+  <tr>
+    <td width="25%" style="padding-left:20px">
+    <form action="/submit_answers" method="post" class="tr">
+      <% @hints.each do |hint| %>
+        <div class="tr">
+          <span class="td"><%= hint.question%></span>
+          <p></p>
+          <span class="td" style="padding-left:20px"><input type="text" name="<%=hint.id%>" size="10" placeholder="answer"></span>
+          <p></p>
+        </div>
+       <% end %>
+       <span class="td" style="padding-left:90px"><button type="submit" > Submit </button></span>
+    </form>
+       
+    </td>
+    <td width="75%">
+    <div style='width: 850px; height:550px;'>
+       <div id="map-canvas"></div>
+      </div>
+    </td>
+  </tr>
+</table>
+  
 </body>
 </html>
