@@ -57,7 +57,7 @@ class MainController < ActionController::Base
    
    def ranking
       @user_order=User.order(:level_id => :desc)
-      
+      @count = 0
    end
    
    def back

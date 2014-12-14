@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style type="text/css">
+
+<style type="text/css" >
       html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
-    </style>
-    <script type="text/javascript"
+</style>
+<link rel="stylesheet" href="css/stylegamepage.css">
+
+<script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiC84j3pUA5mrFcjg7vvuMCfhEzx8ppCA">
     </script>
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript">
       function initialize() {
         var mapOptions = {
@@ -44,42 +47,57 @@
           }) ;
       }
       google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+</script>
+    
 </head>
+
+
 <title>GeoHint</title>
 
 
-<body bgcolor="#BCC6CC">
+<body >
 
 
-<h2>Hello, <%= @user.name %>!</h2>
-<h3>You are at level <%= @user.level_id%></h3>
-<table>
+
+
+<table  style="margin-top:40px">
   <tr>
-    <td width="25%" style="padding-left:20px">
-    <h4>Are you ready for next level ? </h4>
+    <td width="25%" style="padding-left:22px">
+    
+    <div class="box-for-text">
+      <h2>Hello, <%= @user.name %>!</h2>
+      <h4 style="margin-top:20px;margin-left:10px">You are at level <%= @user.level_id%></h4>
+      <h5 style="margin-top:12px;margin-left:30px">See  <a href="/ranking">Ranking</a></h5>
+   </div>
+   
     <form action="/submit_answers" method="post" class="tr">
       <% @hints.each do |hint| %>
-        <div class="tr">
+         
+        <div class="box-for-table" style="margin-top:5px;margin-bottom:5px" >
           <span class="td"><%= hint.question%></span>
-          <p></p>
+          <p> <div class="bar">
+			   <i></i>
+		    </div></p>
           <span class="td" style="padding-left:20px"><input type="text" name="answer<%=hint.id%>" size="10" placeholder="answer"></span>
           <p></p>
         </div>
+        
        <% end %>
-       <span class="td" style="padding-left:90px"><button type="submit" > Submit </button></span>
+       <input id="gobutton" type="submit" value="Submit!" />
+      
     </form>
-       <span class="td">
-            <a href="/ranking"><strong class="leftpadded">Clasament</strong></a>
-          </span>
+            
+      
     </td>
-    <td width="75%">
-    <div style='width: 850px; height:550px;'>
+    
+    <td width="70%" style="margin-top:-20px">
+    <div id="wrapper" style='width: 850px; height:490px;'>
        <div id="map-canvas"></div>
       </div>
     </td>
+ 
   </tr>
 </table>
-  
+
 </body>
 </html>
