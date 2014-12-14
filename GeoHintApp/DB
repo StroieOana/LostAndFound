@@ -40,5 +40,5 @@ INSERT INTO hints VALUES(NULL, "hint11", "answer11", 4,44.42,26.06);
 
 INSERT INTO users VALUES(NULL,"Oana", "oana", 1);
 INSERT INTO users VALUES(NULL,"Andrei", "andrei", 1);
-
+INSERT INTO users VALUES(NULL,"Stefan", "stefan", 2);
 

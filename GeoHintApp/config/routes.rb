@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   get '/main/:id' => 'main#game_page'
   get '/game_page_json' => 'main#game_page_json'
   post '/submit_answers' => 'main#submit_answers'
+  get '/ranking' => 'main#ranking'
+  post '/back' => 'main#back'
 end

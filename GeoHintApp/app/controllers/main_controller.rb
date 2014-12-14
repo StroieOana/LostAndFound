@@ -54,5 +54,16 @@ class MainController < ActionController::Base
       id = session[:user_id]
       redirect_to ("/main/#{id}")
    end
+   
+   def ranking
+      @user_order=User.order(:level_id => :desc)
+      
+   end
+   
+   def back
+      id = session[:user_id]
+      redirect_to ("/main/#{id}")
+   end
+   
 
 end

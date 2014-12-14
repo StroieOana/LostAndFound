@@ -1,0 +1,28 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Clasament</title>
+  <style>
+    body      { padding: 10px }
+    div.table { display: table; }
+    form.tr   { display: table-row; }
+    span.td   { display: table-cell; padding: 5px; }
+  </style>
+</head>
+<body>
+  <h1>In order of level</h1>
+  <div class="table">
+<% @user_order.each do |user| %>
+   
+      <div class="td"><%= user.name%> has level: <%= user.level_id%>   </div>
+     
+
+      </form>
+<% end %>
+  </div>
+  
+  <form action="/back" method="post">
+    <button type="submit">Back to map</button>
+  </form>
+</body>
+</html>
