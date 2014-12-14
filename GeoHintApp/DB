@@ -23,22 +23,22 @@ INSERT INTO levels VALUES(NULL, "level1");
 INSERT INTO levels VALUES(NULL, "level2");
 INSERT INTO levels VALUES(NULL, "level3");
 INSERT INTO levels VALUES(NULL, "level4");
-INSERT INTO hints VALUES(NULL, "hint1", "answer1", 1,44.44,26.05);
-INSERT INTO hints VALUES(NULL, "hint2", "answer2", 1,44.43,26.04);
+INSERT INTO hints VALUES(NULL, "hint1", "a1", 1,44.44,26.05);
+INSERT INTO hints VALUES(NULL, "hint2", "a2", 1,44.43,26.04);
 
-INSERT INTO hints VALUES(NULL, "hint3", "answer3", 2,44.41,26.05);
-INSERT INTO hints VALUES(NULL, "hint4", "answer4", 2,44.43,26.04);
-INSERT INTO hints VALUES(NULL, "hint5", "answer5", 2,44.42,26.05);
+INSERT INTO hints VALUES(NULL, "hint3", "a3", 2,44.41,26.05);
+INSERT INTO hints VALUES(NULL, "hint4", "a4", 2,44.43,26.04);
+INSERT INTO hints VALUES(NULL, "hint5", "a5", 2,44.42,26.05);
 
-INSERT INTO hints VALUES(NULL, "hint6", "answer6", 3,44.46,26.04);
-INSERT INTO hints VALUES(NULL, "hint7", "answer7", 3,44.43,26.01);
+INSERT INTO hints VALUES(NULL, "hint6", "a6", 3,44.46,26.04);
+INSERT INTO hints VALUES(NULL, "hint7", "a7", 3,44.43,26.01);
 
-INSERT INTO hints VALUES(NULL, "hint8", "answer8", 4,44.41,26.03);
-INSERT INTO hints VALUES(NULL, "hint9", "answer9", 4,44.42,26.03);
-INSERT INTO hints VALUES(NULL, "hint10", "answer10", 4,44.41,26.06);
-INSERT INTO hints VALUES(NULL, "hint11", "answer11", 4,44.42,26.06);
+INSERT INTO hints VALUES(NULL, "hint8", "a8", 4,44.41,26.03);
+INSERT INTO hints VALUES(NULL, "hint9", "a9", 4,44.43,26.13);
+INSERT INTO hints VALUES(NULL, "hint10", "a10", 4,44.42,26.09);
+INSERT INTO hints VALUES(NULL, "hint11", "a11", 4,44.41,26.04);
 
 INSERT INTO users VALUES(NULL,"Oana", "oana", 1);
 INSERT INTO users VALUES(NULL,"Andrei", "andrei", 1);
 INSERT INTO users VALUES(NULL,"Stefan", "stefan", 2);
-
+INSERT INTO users VALUES(NULL,"Alex", "alex", 3);

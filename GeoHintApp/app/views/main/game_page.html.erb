@@ -64,10 +64,19 @@
   <tr>
     <td width="25%" style="padding-left:22px">
     
-    <div class="box-for-text">
+    <div class="box-for-text" align="center">
       <h2>Hello, <%= @user.name %>!</h2>
-      <h4 style="margin-top:20px;margin-left:10px">You are at level <%= @user.level_id%></h4>
-      <h5 style="margin-top:12px;margin-left:30px">See  <a href="/ranking">Ranking</a></h5>
+      
+      <% if ( @user.level_id == @last_level_id ) %>
+               <h4 style="margin-top:20px">You are at the last level !</h4>
+               <h4 style="margin-top:20px"><a href="/addlevel">Add another level </a></h4>
+    
+      <%else%>
+               <h4 style="margin-top:20px">You are at level <%=@user.level_id%></h4>
+              
+      <% end %>      
+      
+      <h5 style="margin-top:12px">See  <a href="/ranking">Ranking</a></h5>
    </div>
    
     <form action="/submit_answers" method="post" class="tr">
@@ -78,7 +87,7 @@
           <p> <div class="bar">
 			   <i></i>
 		    </div></p>
-          <span class="td" style="padding-left:20px"><input type="text" name="answer<%=hint.id%>" size="10" placeholder="answer"></span>
+          <span class="td" style="padding-left:20px"><input type="text" name="answer<%=hint.id%>" size="10" placeholder="answer" required></span>
           <p></p>
         </div>
         

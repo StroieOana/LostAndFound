@@ -124,7 +124,7 @@ LOGIN FORM
 .box-for-text{
    width: 160px;
 	margin: 0 auto;
-	margin-left: 18px;
+	margin-left: 15px;
 	margin-top: -1px;
 	margin-bottom: 25px;
 	padding: 10px 10px 10px 20px;

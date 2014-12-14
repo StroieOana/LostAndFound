@@ -1,20 +1,19 @@
-<!DOCTYPE html>
 <html>
 <head>
-    <title>Ranking</title>
+<title> Add level</title>
+<link rel="stylesheet" href="css/stylegamepage.css">
 <style>
-
 body {
-    width: 600px;
+    width: 200px;
     margin: 40px auto;
-    margin-left: 550px; 
+    margin-left: 100px;
     font-family: 'trebuchet MS', 'Lucida sans', Arial;
     font-size: 14px;
     color: #444;
 }
 
 table {
-    *border-collapse: collapse; /* IE7 and lower */
+    *border-collapse: collapse; 
     border-spacing: 0;
     width: 100%;    
 }
@@ -95,37 +94,42 @@ table {
     border-radius: 0 0 6px 0;
 }
 
-
-
-
   
 </style>
 </head>
 
 <body>
+<h2 style="margin-left:50px">Add new level</h2>
+<form action="/insertlevel" method="post">
 
-<h2 style="text-align:center">Ranking</h2>
 <table class="bordered">
     <thead>
-
- 
     <tr>
-        <th width="12%">Rank</th>        
-        <th>Name</th>
-        <th>Level</th>
+        <th>Hint</th>        
+        <th>Answer</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
     </tr>
     </thead>
-    <% @user_order.each do |user| %>
     <tr >
-        <td><%= @count += 1 %></td>        
-        <td><%= user.name%> </td>
-
-        <td><%= user.level_id%> </td>
+        <td><input type="text" name="hint1" placeholder="hint" required></td>        
+        <td><input type="text" name="a1" placeholder="answer" required></td>
+        <td><input type="text" name="lat1" placeholder="latitude" required></td>
+		  <td><input type="text" name="long1" placeholder="longitude" required></td>
     </tr>  
-    <% end %>      
-    
+    <tr >
+        <td><input type="text" name="hint2" placeholder="hint" required></td>        
+        <td><input type="text" name="a2" placeholder="answer" required></td>
+        <td><input type="text" name="lat2" placeholder="latitude" required></td>
+		  <td><input type="text" name="long2" placeholder="longitude" required></td>
+        
+    </tr> 
+   
 
 </table>
+<div style="margin-top:10px;margin-left:80px">
+   <input " type="submit" value="Submit!" />
+</div>
+</form>
 
-</body>
 </html>
